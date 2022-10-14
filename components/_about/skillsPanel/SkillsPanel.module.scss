@@ -1,0 +1,157 @@
+@import "../../../styles/dimensions";
+
+
+.context {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0 80px 0;
+}
+
+.title {
+    text-align: center;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    @media(max-width: $medium) {
+        margin-bottom: 0;
+    }
+}
+
+.arrowBody {
+    line {
+        stroke: #ff3535;
+        stroke-width: 75px;
+    }
+    position: relative;
+    left: calc(50% - 20px);
+    max-height: 1px;
+    @media(max-width: $medium) {
+        display: none;
+    }
+}
+
+.arrowHead {
+    width: 120px;
+    height: 120px;
+    fill: #f3f3f3;
+    position: relative;
+    left: calc(44.5% - 20px);
+    transform: scale(-1);
+    @media(max-width: $medium) {
+        display: none;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+    @media(max-width: $medium) {
+        align-items: center;
+    }
+}
+
+.cardCouple {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    @media(max-width: $medium) {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 10px 0 10px;
+        max-width: 500px;
+    }
+}
+
+
+@mixin card($titleColor, $textColor, $background) {
+    min-width: 80%;
+    min-height: 300px;
+    color: $textColor;
+    background: $background;
+    border-radius: 14px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    div {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+    }
+    h1 {
+        font-family: "Montserrat", serif;
+        color: $titleColor;
+    }
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+    @media(max-width: 1300px) {
+        div {
+            flex-direction: column;
+        }
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+    @media(max-width: $medium) {
+        animation: none;
+    }
+}
+
+.react {
+    @include card($titleColor: #ffffff, $textColor: #e8e8e8, $background: #309bec);
+}
+
+.next {
+    @include card($titleColor: #1e1e1e, $textColor: #4f4f4f, $background: #dcdcdc);
+}
+
+.redux {
+    @include card($titleColor: #ffffff, $textColor: #e5e5e5, $background: #7135a6);
+    img {
+        background: white;
+        border-radius: 50%;
+    }
+}
+
+.framer {
+    @include card($titleColor: #ffffff, $textColor: #e5e5e5, $background: #64a7ff);
+    img {
+        border-radius: 50%;
+        background: white;
+    }
+}
+
+.cypress {
+    @include card($titleColor: #ffffff, $textColor: #afafaf, $background: #282828);
+}
+
+.storybook {
+    @include card($titleColor: #ffffff, $textColor: #eeeeee, $background: #ff43a4);
+    img {
+        background: white;
+        border-radius: 50%;
+    }
+}
+
+.typescript {
+    @include card($titleColor: #ffffff, $textColor: #afafaf, $background: #2d34b6);
+}
+
+.sass {
+    @include card($titleColor: #ffffff, $textColor: #ffffff, $background: #eeb9e7);
+    img {
+        background: white;
+        border-radius: 50%;
+    }
+}

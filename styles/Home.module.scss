@@ -1,0 +1,29 @@
+@import "colors";
+
+
+.canvas {
+    width: 100vw;
+    height: 600px;
+    background: #111111;
+    box-shadow: 0 0 20px #262626;
+    margin-bottom: 100px;
+}
+
+.latestWorkHeaderWrapper {
+    width: 100%;
+    text-align: center;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    user-select: none;
+    span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: small;
+        font-weight: bold;
+        font-family: "Montserrat", serif;
+        margin: 20px;
+        padding:0 10px;
+        background: $dark;
+    }
+}

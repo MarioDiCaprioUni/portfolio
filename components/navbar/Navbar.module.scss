@@ -1,0 +1,46 @@
+.context {
+    width: 100%;
+    height: 100px;
+    background: #f3f3f3;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    user-select: none;
+    z-index: 500;
+}
+
+.logoWrapper {
+    width: 70px;
+    height: 70px;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+}
+
+.pagesWrapper {
+    display: flex;
+    gap: 40px;
+    a {
+        font-family: "Montserrat Alternates", serif;
+        text-transform: lowercase;
+        text-decoration: none;
+        color: #000000;
+        transition: 0.3s;
+        &:hover {
+            @extend .activeLink;
+            transition: 0.3s;
+        }
+    }
+}
+
+.activeLink {
+    color: #6b6b6b !important;
+}
+
+.linksWrapper {
+
+}

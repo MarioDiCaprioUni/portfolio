@@ -1,0 +1,45 @@
+@import "../../../styles/dimensions";
+
+
+.context {
+    width: 100vw;
+    min-height: 540px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0 100px 0;
+    border-bottom: 1px solid #262626;
+    background: #111111;
+    @media(max-width: $medium) {
+        flex-direction: column-reverse;
+        padding: 50px 10px 50px 10px;
+    }
+}
+
+.interestsImages {
+    overflow: hidden;
+    position: relative;
+    width: 70%;
+    max-width: 400px;
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
+    @media(max-width: $medium) {
+        margin-top: 50px;
+    }
+}
+
+.interestsList {
+    h1 {
+        font-size: 3rem;
+        font-family: "Montserrat Alternates", serif;
+        margin: 0;
+    }
+    p {
+        display: flex;
+        flex-direction: column;
+        font-size: large;
+        line-height: 2rem;
+    }
+}

@@ -1,0 +1,60 @@
+@import "colors";
+@import "dimensions";
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+.canvas {
+    width: 100vw;
+    min-height: 710px;
+    background: #111111;
+    box-shadow: 0 0 20px #262626;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvasProfileSummaryWrapper {
+    width: 100%;
+    display: flex;
+    @media(max-width: $medium) {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.canvasProfileSummary {
+    width: 50%;
+    height: 100%;
+    padding-left: 20%;
+    h1 {
+        font-family: "Merriweather", serif;
+        font-size: 5rem;
+        text-transform: lowercase;
+        margin: 0;
+    }
+    h2 {
+        font-weight: lighter;
+        color: rgba(255, 255, 255, 0.76);
+        line-height: 30px;
+        margin: 0;
+    }
+    p {
+        font-size: large;
+        line-height: 2rem;
+    }
+    @media(max-width: $medium) {
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+.canvasProfilePicture {
+    width: 50%;
+    height: 100%;
+    @media(max-width: $medium) {
+        width: 100%;
+    }
+}
