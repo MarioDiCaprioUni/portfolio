@@ -1,3 +1,5 @@
+@import "colors";
+
 // Google Fonts: "Montserrat"
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 // Google Fonts: "Montserrat Alternates"
@@ -13,6 +15,9 @@ html, body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: $dark;
+    color: $light;
+    font-family: "Karla", serif;
 }
 
 * {
