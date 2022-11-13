@@ -1,0 +1,45 @@
+.context {
+    width: 330px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 14px;
+    background: #eeeeee;
+    cursor: pointer;
+    padding: 5px;
+    &:hover {
+        .title {
+            opacity: 1;
+            transform: none;
+            transition: 0.5s;
+        }
+    }
+}
+
+.thumbnail {
+    width: 100%;
+    border-radius: inherit;
+    transition: 0.5s;
+}
+
+.title {
+    position: absolute;
+    top: 100px;
+    font-family: 'Montserrat Alternates', serif;
+    border-radius: 14px;
+    transition: 0.5s;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 10px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+.summary {
+    font-family: 'Montserrat', serif;
+    color: #606060;
+    transition: 0.5s;
+}
