@@ -1,8 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import initialHintsReducer from "./slices/initialHintsSlice";
+import navbarStateReducer from "./slices/navbarStateSlice";
 
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        initialHints: initialHintsReducer,
+        navbarState: navbarStateReducer
+    },
 });
 
 
