@@ -1,9 +1,13 @@
 import React, {ReactNode} from 'react';
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {motion, useCycle, Variants} from "framer-motion"
+import {AnimatePresence, motion, Variants} from "framer-motion"
 import {BsGithub as GitHubIcon} from "react-icons/bs";
 import styles from './Navbar.module.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
+import * as NavbarState from "../../redux/slices/navbarStateSlice";
+import * as InitialHints from "../../redux/slices/initialHintsSlice";
 
 
 const navbarVariants: Variants = {
@@ -31,7 +35,14 @@ interface NavbarMasterProps {
 }
 
 const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
-    const [isOpen, toggleOpen] = useCycle<boolean>(false, true);
+    const { isOpen } = useSelector((state: RootState) => state.navbarState);
+    const { navbarClickMeDialog } = useSelector((state: RootState) => state.initialHints);
+    const dispatch = useDispatch();
+
+    function toggleOpen() {
+        dispatch(InitialHints.consume('navbarClickMeDialog'));
+        dispatch(NavbarState.toggle());
+    }
 
     return (
         <motion.nav animate={isOpen? 'open' : 'closed'}>
@@ -47,6 +58,17 @@ const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
                 <img src="/logo.png"  alt=''/>
             </motion.div>
 
+            {/* Helper Popup */}
+            <AnimatePresence>
+                {
+                    navbarClickMeDialog &&
+                    <motion.div className={styles.clickMeDialog} exit={{ opacity: 0 }} transition={{ type: 'linear', duration: 0.3 }}>
+                        If you click me, I will show you magic!
+                    </motion.div>
+                }
+            </AnimatePresence>
+
+            {/* Navigation */}
             <motion.div className={styles.navigation} variants={navbarVariants}>
                 { children }
             </motion.div>

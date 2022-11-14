@@ -28,6 +28,28 @@
     }
 }
 
+.clickMeDialog {
+    position: fixed;
+    left: 145px;
+    top: 45px;
+    width: 150px;
+    user-select: none;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 14px;
+    padding: 10px;
+    &::after {
+        content: " ";
+        position: absolute;
+        top: 37%;
+        right: 100%; /* To the left of the tooltip */
+        margin-top: -5px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent #ffffff transparent transparent;
+    }
+}
+
 .navigation {
     display: flex;
     justify-content: space-around;
