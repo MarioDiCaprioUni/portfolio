@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Base from "../components/base/Base";
 import styles from '../styles/Home.module.scss';
 import ProjectPreview from "../components/projectPreview/ProjectPreview";
+import FrontCover from "../components/_home/frontCover/FrontCover";
 
 
 const Home: NextPage = () => {
@@ -9,7 +10,7 @@ const Home: NextPage = () => {
         <Base title="Mario Di Caprio | Home">
 
             <div className={styles.canvas}>
-
+                <FrontCover />
             </div>
 
             <div className={styles.latestWorkHeaderWrapper}>

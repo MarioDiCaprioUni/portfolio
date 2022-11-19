@@ -1,0 +1,34 @@
+@import "../../../styles/glow";
+@import "../../../styles/colors";
+
+
+.context {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.letters {
+    @include GlowText();
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
+    color: #f8f8f8;
+    font-family: "Slabo 27px", monospace;
+    font-weight: bold;
+    letter-spacing: 15px;
+}
+
+.letter {
+    height: min-content;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
