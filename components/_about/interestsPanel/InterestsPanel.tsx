@@ -1,13 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from './InterestsPanel.module.scss';
-import {motion, MotionProps, useScroll} from "framer-motion";
-
-
-const fadeOnScrollEffect: MotionProps = {
-    initial: { opacity: 0 },
-    viewport: { once: true, margin: '-200px' },
-    whileInView: { opacity: 1, transition: { duration: 0.8 } }
-}
+import {motion, useScroll} from "framer-motion";
 
 
 const ChessWheel: React.FC = () => {
@@ -39,7 +32,7 @@ const ChessWheel: React.FC = () => {
 
 const InterestsPanel: React.FC = () => {
     return (
-        <motion.div className={styles.context} {...fadeOnScrollEffect}>
+        <motion.div className={styles.context}>
 
             <ChessWheel />
 

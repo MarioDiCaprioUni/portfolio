@@ -1,5 +1,6 @@
 @import "../../../styles/glow";
 @import "../../../styles/colors";
+@import "../../../styles/dimensions";
 
 
 .context {
@@ -7,22 +8,30 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding-top: 50px;
+    @media (max-width: 600px) {
+        padding-top: 100px;
+    }
 }
 
 .letters {
     @include GlowText();
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 150px;
+    font-size: 9vw;
     color: #f8f8f8;
     font-family: "Slabo 27px", monospace;
     font-weight: bold;
     letter-spacing: 15px;
+    @media (max-width: 1800px) {
+        font-size: 10vw;
+    }
+    @media (max-width: $large) {
+        font-size: 15vw;
+    }
+    @media (max-width: $medium) {
+        font-size: 16vw;
+        letter-spacing: 10px;
+    }
 }
 
 .letter {

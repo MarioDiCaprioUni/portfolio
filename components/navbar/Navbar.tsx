@@ -11,21 +11,13 @@ import * as InitialHints from "../../redux/slices/initialHintsSlice";
 
 
 const navbarVariants: Variants = {
-    open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-        transition: {
-            type: "spring",
-            stiffness: 20,
-            restDelta: 2
-        }
-    }),
+    open: {
+        scale: 1,
+        opacity: 1
+    },
     closed: {
-        clipPath: "circle(0px at 40px 40px)",
-        transition: {
-            type: "spring",
-            stiffness: 400,
-            damping: 40
-        }
+        scale: 0,
+        opacity: 0
     }
 };
 
@@ -45,21 +37,21 @@ const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
     }
 
     return (
-        <motion.nav animate={isOpen? 'open' : 'closed'}>
+        <AnimatePresence>
+            <motion.nav animate={isOpen? 'open' : 'closed'}>
 
-            {/* Logo */}
-            <motion.div
-                className={styles.logoWrapper}
-                onClick={() => toggleOpen()}
-                whileTap={{ scale: 0.7 }}
-                whileHover={{ scale: 0.9 }}
-                transition={{ type: 'spring', duration: 0.3 }}
-            >
-                <img src="/logo.png"  alt=''/>
-            </motion.div>
+                {/* Logo */}
+                <motion.div
+                    className={styles.logoWrapper}
+                    onClick={() => toggleOpen()}
+                    whileTap={{ scale: 0.7 }}
+                    whileHover={{ scale: 0.9 }}
+                    transition={{ type: 'spring', duration: 0.3 }}
+                >
+                    <img src="/logo.png"  alt=''/>
+                </motion.div>
 
-            {/* Helper Popup */}
-            <AnimatePresence>
+                {/* Helper Popup */}
                 {
                     navbarClickMeDialog &&
                     <motion.div
@@ -72,14 +64,14 @@ const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
                         If you click me, I will show you magic!
                     </motion.div>
                 }
-            </AnimatePresence>
 
-            {/* Navigation */}
-            <motion.div className={styles.navigation} variants={navbarVariants}>
-                { children }
-            </motion.div>
+                {/* Navigation */}
+                <motion.div className={styles.navigation} variants={navbarVariants}>
+                    { children }
+                </motion.div>
 
-        </motion.nav>
+            </motion.nav>
+        </AnimatePresence>
     );
 }
 

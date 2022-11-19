@@ -20,7 +20,10 @@ const letterVariants: Variants = {
 function buildLettersWithAnimation(text: string): ReactNode {
     const letters = Array.from(text).map(char => {
         if (char === '\n') {
-            return <span style={{ margin: 20 }} />;
+            return <br className={styles.letter}/>;
+        }
+        if (char === ' ') {
+            return <span className={styles.letter} style={{ margin: 20 }} />
         }
         return (
             <motion.span
@@ -37,7 +40,7 @@ function buildLettersWithAnimation(text: string): ReactNode {
     });
 
     return (
-        <motion.div
+        <motion.h1
             className={styles.letters}
             initial="hidden"
             animate="visible"
@@ -49,16 +52,16 @@ function buildLettersWithAnimation(text: string): ReactNode {
             }}
         >
             { letters }
-        </motion.div>
+        </motion.h1>
     );
 }
 
 
 const FrontCover: React.FC = () => {
     return (
-        <motion.div className={styles.context}>
-            { buildLettersWithAnimation('Mario\nDi Caprio') }
-        </motion.div>
+        <div className={styles.context}>
+            { buildLettersWithAnimation(`Hello,\nI'm Mario`) }
+        </div>
     );
 }
 
