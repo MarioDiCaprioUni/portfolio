@@ -3,11 +3,10 @@
 
 .context {
     width: 100vw;
-    min-height: 540px;
+    min-height: 700px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 30px 0 100px 0;
     border-bottom: 1px solid #262626;
     background: #111111;
     @media(max-width: $medium) {
