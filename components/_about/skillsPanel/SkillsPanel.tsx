@@ -1,8 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {motion, Transition, useScroll} from "framer-motion";
+import {motion, MotionProps, Transition, useScroll} from "framer-motion";
 import {dimensions} from "../../../scssGlobals";
 import {useMediaQuery} from "react-responsive";
 import styles from "./SkillsPanel.module.scss";
+
+
+const fadeOnScrollEffect: MotionProps = {
+    initial: { opacity: 0 },
+    viewport: { once: true, margin: '-100px' },
+    whileInView: { opacity: 1, transition: { duration: 0.8 } }
+}
 
 
 interface Card {
@@ -42,6 +49,7 @@ const CardCouple: React.FC<CardCoupleProps> = ({ left, right }) => {
         <div ref={ref} className={styles.cardCouple}>
 
             <motion.div
+                {...fadeOnScrollEffect}
                 animate={isSmallScreen? undefined : { translateX: -100 * progress }}
                 transition={transition}
                 className={left.className}
@@ -66,6 +74,7 @@ const CardCouple: React.FC<CardCoupleProps> = ({ left, right }) => {
             </motion.div>
 
             <motion.div
+                {...fadeOnScrollEffect}
                 animate={isSmallScreen? undefined : { translateX: 100 * progress }}
                 transition={transition}
                 className={right.className}

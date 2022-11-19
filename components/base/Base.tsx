@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from "../navbar/Navbar";
 import Head from "next/head";
+import {motion} from 'framer-motion';
 import styles from './Base.module.scss';
 
 
@@ -11,7 +12,11 @@ interface BaseProps {
 
 const Base: React.FC<BaseProps> = ({ children, title }) => {
     return (
-        <div className={styles.context}>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.8 } }}
+            className={styles.context}
+        >
 
             <Head>
                 <title>{ title }</title>
@@ -23,7 +28,7 @@ const Base: React.FC<BaseProps> = ({ children, title }) => {
                 { children }
             </main>
 
-        </div>
+        </motion.div>
     );
 }
 
