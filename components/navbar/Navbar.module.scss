@@ -36,8 +36,10 @@
     user-select: none;
     background: #ffffff;
     color: #000000;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.24);
     border-radius: 14px;
     padding: 10px;
+    z-index: 1000;
     &::after {
         content: " ";
         position: absolute;

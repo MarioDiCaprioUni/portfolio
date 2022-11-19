@@ -62,7 +62,13 @@ const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
             <AnimatePresence>
                 {
                     navbarClickMeDialog &&
-                    <motion.div className={styles.clickMeDialog} exit={{ opacity: 0 }} transition={{ type: 'linear', duration: 0.3 }}>
+                    <motion.div
+                        className={styles.clickMeDialog}
+                        initial={{ opacity: 1, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ type: 'spring', duration: 0.5 }}
+                    >
                         If you click me, I will show you magic!
                     </motion.div>
                 }
