@@ -1,8 +1,9 @@
+import styles from '../styles/Home.module.scss';
 import type { NextPage } from 'next';
 import Base from "../components/base/Base";
-import styles from '../styles/Home.module.scss';
-import ProjectPreview from "../components/projectPreview/ProjectPreview";
+import {DomcolJS} from "../components/projectPreview/ProjectPreview";
 import FrontCover from "../components/_home/frontCover/FrontCover";
+import {AnimateSharedLayout, motion} from "framer-motion";
 
 
 const Home: NextPage = () => {
@@ -17,14 +18,12 @@ const Home: NextPage = () => {
                 <span>some of my latest work</span>
             </div>
 
-            <div className={styles.projects}>
-                <ProjectPreview
-                    id="domcol-js"
-                    title="Domcol JS"
-                    thumbnailSrc="/thumbnails/domcol_js.png"
-                    summary="Plot complex-valued functions"
-                />
-            </div>
+            <AnimateSharedLayout>
+                <motion.div layout className={styles.projects}>
+                    <DomcolJS />
+                </motion.div>
+            </AnimateSharedLayout>
+
 
         </Base>
     );

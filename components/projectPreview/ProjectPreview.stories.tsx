@@ -1,23 +1,15 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import ProjectPreview from "./ProjectPreview";
+import {DomcolJS} from "./ProjectPreview";
 
 
 export default {
     title: 'components/ProjectPreview',
-    component: ProjectPreview
-} as ComponentMeta<typeof ProjectPreview>;
+    component: DomcolJS,
+} as ComponentMeta<typeof DomcolJS>;
 
 
-const Preset: ComponentStory<typeof ProjectPreview> = (props) => {
+export const Main: ComponentStory<typeof DomcolJS> = (props) => {
     return (
-        <ProjectPreview {...props} />
+        <DomcolJS {...props} />
     );
-}
-
-
-export const DomcolJS = Preset.bind({});
-DomcolJS.args = {
-    id: 'domcol-js',
-    title: 'Domcol JS',
-    thumbnailSrc: '/thumbnails/domcol_js.png'
 }

@@ -18,16 +18,16 @@ const letterVariants: Variants = {
 
 
 function buildLettersWithAnimation(text: string): ReactNode {
-    const letters = Array.from(text).map(char => {
+    const letters = Array.from(text).map((char, index) => {
         if (char === '\n') {
-            return <br className={styles.letter}/>;
+            return <br key={index} className={styles.letter}/>;
         }
         if (char === ' ') {
-            return <span className={styles.letter} style={{ margin: 20 }} />
+            return <span key={index} className={styles.letter} style={{ margin: 20 }} />
         }
         return (
             <motion.span
-                key={char}
+                key={index}
                 className={styles.letter}
                 variants={letterVariants}
                 transition={{
