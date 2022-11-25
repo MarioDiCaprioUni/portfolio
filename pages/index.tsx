@@ -9,22 +9,23 @@ import {AnimateSharedLayout, motion} from "framer-motion";
 const Home: NextPage = () => {
     return (
         <Base title="Mario Di Caprio | Home">
+            <div className={styles.context}>
 
-            <div className={styles.canvas}>
-                <FrontCover />
+                <div className={styles.canvas}>
+                    <FrontCover />
+                </div>
+
+                <div className={styles.latestWorkHeaderWrapper}>
+                    <span>some of my latest work</span>
+                </div>
+
+                <AnimateSharedLayout>
+                    <motion.div layout className={styles.projects}>
+                        <DomcolJS />
+                    </motion.div>
+                </AnimateSharedLayout>
+
             </div>
-
-            <div className={styles.latestWorkHeaderWrapper}>
-                <span>some of my latest work</span>
-            </div>
-
-            <AnimateSharedLayout>
-                <motion.div layout className={styles.projects}>
-                    <DomcolJS />
-                </motion.div>
-            </AnimateSharedLayout>
-
-
         </Base>
     );
 }

@@ -1,7 +1,3 @@
-@import "../../styles/colors";
-@import "../../styles/dimensions";
-
-
 .context {
     width: 100vw;
     display: flex;
@@ -12,9 +8,5 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 30% 0 30%;
-        @media(max-width: $medium) {
-            padding: 0;
-        }
     }
 }
