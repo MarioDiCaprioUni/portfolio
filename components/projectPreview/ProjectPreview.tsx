@@ -79,9 +79,11 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ title, thumbnailSrc, su
     /** Whether the card is open */
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    /** Opens the card */
+    /** Opens the card if it's currently in its closed state */
     function open() {
-        setIsOpen(true);
+        if (!isOpen) {
+            setIsOpen(true);
+        }
     }
 
     /** Closes the card */
