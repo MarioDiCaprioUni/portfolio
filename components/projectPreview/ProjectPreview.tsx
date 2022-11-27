@@ -4,6 +4,10 @@ import {AnimatePresence, motion, MotionProps, Variants} from "framer-motion";
 import {BsGithub as GitHubIcon} from "react-icons/bs";
 
 
+/**
+ * The component's variants. The {@link ProjectPreview} can be in one of two states: `open`
+ * or `closed`.
+ */
 const contextVariants: Variants = {
     'closed': i => ({
         width: 330,
@@ -29,6 +33,12 @@ const contextVariants: Variants = {
     }
 }
 
+/**
+ * The animation that animates components into view. This is used
+ * for when the {@link ProjectPreview} opens, because there are
+ * additional components that need to be introduced to the view,
+ * such as the project's description.
+ */
 const showComponentWhenOpen: MotionProps = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -36,28 +46,45 @@ const showComponentWhenOpen: MotionProps = {
 }
 
 
-interface ProjectProps {
-    id: string;
+/**
+ * The props for the {@link ProjectPreview} component.
+ */
+interface ProjectPreviewProps {
+    /** The project's title (name). */
     title: string;
+    /** A URL that points at the project's thumbnail. */
     thumbnailSrc: string;
+    /** A summary about the project, typically one sentence. */
     summary: string;
+    /** A more detailed description about the project. Can be a long text. */
     description: string;
+    /** Links for this project. */
     links?: {
+        /** A link pointing at the project's official website. */
         official?: string,
+        /** A link pointing at the project's GitHub repository. */
         github?: string,
     }
 }
 
 
-const ProjectPreview: React.FC<ProjectProps> = ({ title, thumbnailSrc, summary, description, links }) => {
+/**
+ * This component displays one of the author's projects. It is a small, absolutely positioned card
+ * that expands upon click, showing more details about the project. Multiple projects are intended to
+ * be collected into one horizontal container, with `overflow-x` set to `auto`.
+ * @param props The component's props
+ * @see ProjectPreviewProps
+ */
+const ProjectPreview: React.FC<ProjectPreviewProps> = ({ title, thumbnailSrc, summary, description, links }) => {
+    /** Whether the card is open */
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    function handleContextClicked() {
-        if (!isOpen) {
-            setIsOpen(true);
-        }
+    /** Opens the card */
+    function open() {
+        setIsOpen(true);
     }
 
+    /** Closes the card */
     function close() {
         setIsOpen(false);
     }
@@ -67,7 +94,7 @@ const ProjectPreview: React.FC<ProjectProps> = ({ title, thumbnailSrc, summary, 
             <motion.div
                 layoutId="ProjectPreview"
                 className={styles.context}
-                onClick={handleContextClicked}
+                onClick={open}
                 initial={"closed"}
                 animate={isOpen? "open" : "closed"}
                 variants={contextVariants}
@@ -173,9 +200,12 @@ export default ProjectPreview;
 
 /////////////////////////////////////////////////////////////////
 
+/**
+ * This is a preview of the *DomcolJS* project.
+ * @see ProjectPreview
+ */
 export const DomcolJS: React.FC = () => (
     <ProjectPreview
-        id="domcol-js"
         title="Domcol JS"
         thumbnailSrc="/thumbnails/domcol_js.png"
         summary="Plot complex-valued functions"

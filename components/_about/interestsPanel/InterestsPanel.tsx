@@ -3,10 +3,16 @@ import styles from './InterestsPanel.module.scss';
 import {motion, useScroll} from "framer-motion";
 
 
+/**
+ * This is a decorative wheel made of chess pieces. It rotates on scroll.
+ */
 const ChessWheel: React.FC = () => {
+    /** The wheel's current rotation */
     const [rotation, setRotation] = useState<number>(0);
+    /** The global scroll value. Used to update rotation. */
     const { scrollY } = useScroll();
 
+    /* Updates the wheel's rotation on scroll */
     useEffect(() => {
         scrollY.onChange(x => {
             setRotation(x * 0.25);
@@ -30,6 +36,12 @@ const ChessWheel: React.FC = () => {
 }
 
 
+/**
+ * This is the panel displaying the author's interests. On the left can be
+ * found a decorative {@link ChessWheel}, while on the right is a list of
+ * interests. This component is responsive: On small screens the wheel
+ * is on top and the list is on the bottom.
+ */
 const InterestsPanel: React.FC = () => {
     return (
         <motion.div className={styles.context}>

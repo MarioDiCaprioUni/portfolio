@@ -10,6 +10,10 @@ import * as NavbarState from "../../redux/slices/navbarStateSlice";
 import * as InitialHints from "../../redux/slices/initialHintsSlice";
 
 
+/**
+ * These are the navbar variants. The navbar can be in one of two states:
+ * It can be `open` or it can be `closed`.
+ */
 const navbarVariants: Variants = {
     open: {
         scale: 1,
@@ -22,15 +26,25 @@ const navbarVariants: Variants = {
 };
 
 
-interface NavbarMasterProps {
-    children?: ReactNode;
-}
-
-const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
+/**
+ * This is the navbar base. It consists of a button and its children that should
+ * be laid out right next to it. In our case, the children are the navbar itself.
+ * When the button is clicked, the navbar toggles between `open` and `closed`
+ * and changes its appearance accordingly. This state is managed via a redux
+ * reducer. Also, there is a pop-up dialog that hints at the button to be pressed.
+ * This dialog is only shown initially and hidden once the button is clicked.
+ * This state is also managed via a redux reducer.
+ * @param props The children to lay out
+ */
+const NavbarMaster: React.FC<{ children?: ReactNode }> = ({ children }) => {
+    /** Whether the navbar is open */
     const { isOpen } = useSelector((state: RootState) => state.navbarState);
+    /** Whether to show the initial dialog that hints at the button. */
     const { navbarClickMeDialog } = useSelector((state: RootState) => state.initialHints);
+    /** Used to dispatch information to redux */
     const dispatch = useDispatch();
 
+    /* Toggles the navbar state and dispatches it to redux. Also disables initial pop-up hint. */
     function toggleOpen() {
         dispatch(InitialHints.consume('navbarClickMeDialog'));
         dispatch(NavbarState.toggle());
@@ -76,6 +90,11 @@ const NavbarMaster: React.FC<NavbarMasterProps> = ({ children }) => {
 }
 
 
+/**
+ * This component is the application's navbar. For more information,
+ * see {@link NavbarMaster}.
+ * @see NavbarMaster
+ */
 const Navbar: React.FC = () => {
     const router = useRouter();
 
@@ -85,28 +104,34 @@ const Navbar: React.FC = () => {
 
     return (
         <NavbarMaster>
+
             {/* Pages */}
             <div className={styles.pagesWrapper}>
+
                 <Link href="/">
                     <a className={getNavLinkClass("/")}>
                         home
                     </a>
                 </Link>
+
                 <Link href="/about">
                     <a className={getNavLinkClass("/about")}>
                         about
                     </a>
                 </Link>
+
                 <Link href="/projects">
                     <a className={getNavLinkClass("/projects")}>
                         projects
                     </a>
                 </Link>
+
                 <Link href="/contact">
                     <a className={getNavLinkClass("/contact")}>
                         contact
                     </a>
                 </Link>
+
             </div>
 
             {/* Links */}
