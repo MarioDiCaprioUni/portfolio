@@ -2,6 +2,7 @@ import styles from "./ProjectPreview.module.scss";
 import React, {useState} from "react";
 import {AnimatePresence, motion, MotionProps, Variants} from "framer-motion";
 import {BsGithub as GitHubIcon} from "react-icons/bs";
+import {IoPlanetSharp as OfficialWebsiteIcon} from "react-icons/io5";
 
 
 /**
@@ -155,6 +156,13 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ title, thumbnailSrc, su
                             <div className={styles.links}>
                                 <span>View This Project:</span>
                                 {
+                                    links?.official &&
+                                    <p>
+                                        <OfficialWebsiteIcon />
+                                        <a href={links.official}>Official Website</a>
+                                    </p>
+                                }
+                                {
                                     links?.github &&
                                     <p>
                                         <GitHubIcon />
@@ -219,6 +227,7 @@ export const DomcolJS: React.FC = () => (
             a task. You can also plot the famous mandelbrot set!
         `}
         links={{
+            official: 'https://domcol-js.vercel.app',
             github: 'https://github.com/MarioDiCaprioUni/domcol-js'
         }}
     />
