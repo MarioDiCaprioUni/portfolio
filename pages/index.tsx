@@ -1,32 +1,32 @@
 import styles from '../styles/Home.module.scss';
 import type { NextPage } from 'next';
-import Base from "../components/base/Base";
-import {DomcolJS} from "../components/projectPreview/ProjectPreview";
-import FrontCover from "../components/_home/frontCover/FrontCover";
-import {AnimateSharedLayout, motion} from "framer-motion";
+import FrontCover from "../components/_index/FrontCover/FrontCover";
+import About from "../components/_index/About/About";
+import Skills from "../components/_index/Skills/Skills";
+import Interests from "../components/_index/Interests/Interests";
+import Projects from "../components/_index/Projects/Projects";
+import Head from "next/head";
+import Navbar from "../components/Navbar/Navbar";
 
 
 const Home: NextPage = () => {
     return (
-        <Base title="Mario Di Caprio | Home">
-            <div className={styles.context}>
+        <div className={styles.context}>
 
-                <div className={styles.canvas}>
-                    <FrontCover />
-                </div>
+            {/* Appendix to document head */}
+            <Head>
+                <title>Mario Di Caprio</title>
+            </Head>
 
-                <div className={styles.latestWorkHeaderWrapper}>
-                    <span>some of my latest work</span>
-                </div>
+            <Navbar />
 
-                <AnimateSharedLayout>
-                    <motion.div layout className={styles.projects}>
-                        <DomcolJS />
-                    </motion.div>
-                </AnimateSharedLayout>
+            <FrontCover />
+            <About />
+            <Skills />
+            <Interests />
+            <Projects />
 
-            </div>
-        </Base>
+        </div>
     );
 }
 

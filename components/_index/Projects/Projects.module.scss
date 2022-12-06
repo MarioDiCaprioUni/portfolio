@@ -1,0 +1,77 @@
+@import "../../../styles/dimensions";
+@import "../../../styles/presets";
+
+
+.context {
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 5% 25% 5% 25%;
+}
+
+.title {
+    @include Primary-Headline;
+    margin-bottom: 50px;
+}
+
+@mixin FeaturedProject($align) {
+    width: 1000px;
+    height: 370px;
+    position: relative;
+    z-index: 1;
+    @if $align == left {
+        img {
+            right: 0;
+        }
+        .featuredProjectContent {
+            left: 0;
+        }
+    } @else {
+        img {
+            left: 0;
+        }
+        .featuredProjectContent {
+            right: 0;
+            text-align: right;
+        }
+    }
+}
+
+.featuredProjectLeft {
+    @include FeaturedProject($align: left);
+}
+
+.featuredProjectRight {
+    @include FeaturedProject($align: right);
+}
+
+.featuredProjectContent {
+    position: absolute;
+    width: 500px;
+    height: fit-content;
+    border-radius: 5px;
+    z-index: 2;
+    h1 {
+        @include Primary-Headline;
+        span {
+            font-size: 13px;
+        }
+    }
+    p {
+        @include Textual;
+        width: 100%;
+        font-size: 15.5px;
+        color: #a9b2ce;
+        line-height: 24px;
+        background: #112240;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.26);
+        padding: 25px;
+    }
+    div {
+        font-size: 25px;
+        * {
+            color: $vibrant;
+            margin: 5px;
+        }
+    }
+}

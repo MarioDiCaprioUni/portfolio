@@ -1,14 +1,14 @@
 @import "../../../styles/dimensions";
+@import "../../../styles/presets";
 
 
 .context {
     width: 100vw;
-    min-height: 700px;
+    min-height: 100vh;
+    padding: 5% 15% 5% 15%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 1px solid #262626;
-    background: #111111;
     @media(max-width: $medium) {
         flex-direction: column-reverse;
         padding: 50px 10px 50px 10px;
@@ -36,14 +36,16 @@
 
 .interestsList {
     h1 {
-        font-size: 3rem;
-        font-family: "Montserrat Alternates", serif;
-        margin: 0;
+        @include Primary-Headline;
     }
     p {
+        @include Textual;
         display: flex;
         flex-direction: column;
-        font-size: large;
-        line-height: 2rem;
+        span:before {
+            content: '* ';
+            color: $vibrant;
+            font-size: xx-large;
+        }
     }
 }

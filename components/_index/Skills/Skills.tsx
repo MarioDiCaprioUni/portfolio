@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {motion, MotionProps, Transition, useScroll} from "framer-motion";
 import {dimensions} from "../../../scssGlobals";
 import {useMediaQuery} from "react-responsive";
-import styles from "./SkillsPanel.module.scss";
+import styles from "./Skills.module.scss";
 
 
 /**
@@ -30,8 +30,6 @@ interface Card {
     imageSrc: string;
     /** A description for this skill */
     text: string;
-    /** An additional CSS class */
-    className: string;
 }
 
 /**
@@ -95,7 +93,7 @@ const CardCouple: React.FC<CardCoupleProps> = ({ left, right }) => {
                 {...fadeOnScrollEffect}
                 animate={isSmallScreen? undefined : { translateX: -100 * progress }}
                 transition={transition}
-                className={left.className}
+                className={styles.card}
             >
                 <div>
                     {
@@ -121,7 +119,7 @@ const CardCouple: React.FC<CardCoupleProps> = ({ left, right }) => {
                 {...fadeOnScrollEffect}
                 animate={isSmallScreen? undefined : { translateX: 100 * progress }}
                 transition={transition}
-                className={right.className}
+                className={styles.card}
             >
                 <div>
                     <img src={right.imageSrc} alt="" />
@@ -184,8 +182,13 @@ const SkillsPanel: React.FC = () => {
 
             {/* The panel's title */}
             <h1 className={styles.title}>
+                <span>02.</span>
                 My Skills
             </h1>
+
+            <h2 className={styles.subtitle}>
+                What tools do I use?
+            </h2>
 
             {/* The arrow's body */}
             <motion.svg
@@ -210,7 +213,6 @@ const SkillsPanel: React.FC = () => {
                 {/* React & Next */}
                 <CardCouple
                     left={{
-                        className: styles.react,
                         title: 'React Js',
                         imageSrc: '/img/react.png',
                         text:
@@ -219,7 +221,6 @@ const SkillsPanel: React.FC = () => {
                             to use.`
                     }}
                     right={{
-                        className: styles.next,
                         title: 'Next Js',
                         imageSrc: '/img/next.png',
                         text:
@@ -232,7 +233,6 @@ const SkillsPanel: React.FC = () => {
                 {/* Redux & Framer */}
                 <CardCouple
                     left={{
-                        className: styles.redux,
                         title: 'Redux',
                         imageSrc: '/img/redux.png',
                         text:
@@ -241,7 +241,6 @@ const SkillsPanel: React.FC = () => {
                             connecting to a REST service!`
                     }}
                     right={{
-                        className: styles.framer,
                         title: 'Framer',
                         imageSrc: '/img/framer.png',
                         text:
@@ -253,7 +252,6 @@ const SkillsPanel: React.FC = () => {
                 {/* Cypress & Storybook */}
                 <CardCouple
                     left={{
-                        className: styles.cypress,
                         title: 'Cypress',
                         imageSrc: '/img/cypress.png',
                         text:
@@ -262,7 +260,6 @@ const SkillsPanel: React.FC = () => {
                             making the whole process even more straightforward.`
                     }}
                     right={{
-                        className: styles.storybook,
                         title: 'Storybook',
                         imageSrc: '/img/storybook.png',
                         text:
@@ -275,7 +272,6 @@ const SkillsPanel: React.FC = () => {
                 {/* Typescript & Sass */}
                 <CardCouple
                     left={{
-                        className: styles.typescript,
                         title: 'TypeScript',
                         imageSrc: '/img/typescript.png',
                         text:
@@ -284,7 +280,6 @@ const SkillsPanel: React.FC = () => {
                             much easier too, because of the additional documentation that types infer.`
                     }}
                     right={{
-                        className: styles.sass,
                         title: 'Sass',
                         imageSrc: '/img/sass.png',
                         text:

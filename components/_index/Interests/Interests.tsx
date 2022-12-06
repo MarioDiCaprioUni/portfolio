@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import styles from './InterestsPanel.module.scss';
+import styles from './Interests.module.scss';
 import {motion, useScroll} from "framer-motion";
 
 
@@ -42,24 +42,30 @@ const ChessWheel: React.FC = () => {
  * interests. This component is responsive: On small screens the wheel
  * is on top and the list is on the bottom.
  */
-const InterestsPanel: React.FC = () => {
+const Interests: React.FC = () => {
     return (
         <motion.div className={styles.context}>
 
             <ChessWheel />
 
             <div className={styles.interestsList}>
-                <h1>My Interests</h1>
+
+                <h1>
+                    <span>03.</span>
+                    My Interests
+                </h1>
+
                 <p>
                     <span>I like developing new skills</span>
                     <span>I <b>LOVE</b> playing chess</span>
                     <span>I take an interest in cooking</span>
                     <span>I enjoy traveling and exploring new cultures</span>
                 </p>
+
             </div>
 
         </motion.div>
     );
 }
 
-export default InterestsPanel;
+export default Interests;
