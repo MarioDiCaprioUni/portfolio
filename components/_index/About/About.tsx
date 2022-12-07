@@ -4,7 +4,7 @@ import React from "react";
 
 const About: React.FC = () => {
     return (
-        <div className={styles.context}>
+        <div id="about" className={styles.context}>
 
             <h1 className={styles.title}>
                 <span>01.</span>

@@ -178,7 +178,7 @@ const SkillsPanel: React.FC = () => {
     }
 
     return (
-        <div className={styles.context}>
+        <div id="skills" className={styles.context}>
 
             {/* The panel's title */}
             <h1 className={styles.title}>

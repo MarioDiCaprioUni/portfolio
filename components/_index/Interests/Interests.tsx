@@ -44,7 +44,7 @@ const ChessWheel: React.FC = () => {
  */
 const Interests: React.FC = () => {
     return (
-        <motion.div className={styles.context}>
+        <motion.div id="interests" className={styles.context}>
 
             <ChessWheel />
 

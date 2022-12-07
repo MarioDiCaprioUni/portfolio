@@ -20,7 +20,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ imgSrc, title, align,
     const projectClass = align === 'left'? styles.featuredProjectLeft : styles.featuredProjectRight;
 
     return (
-        <div className={projectClass}>
+        <div id="projects" className={projectClass}>
 
             <MaskedImage width="580px" height="340px" src={imgSrc} />
 

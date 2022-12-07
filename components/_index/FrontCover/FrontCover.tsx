@@ -9,7 +9,7 @@ import React from "react";
  */
 const FrontCover: React.FC = () => {
     return (
-        <div className={styles.context}>
+        <div id="front-cover" className={styles.context}>
 
             <div className={styles.myNameIs}>
                 Hi, I am
