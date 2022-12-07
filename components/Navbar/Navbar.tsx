@@ -1,6 +1,5 @@
 import styles from "./Navbar.module.scss";
 import React from "react";
-import Logo from "../Logo/Logo";
 import {motion, MotionProps} from "framer-motion";
 
 
@@ -14,7 +13,7 @@ const Navbar: React.FC = () => {
         <div className={styles.context}>
 
             <motion.div className={styles.logoWrapper} {...logoMotion}>
-                <Logo />
+                <img src="/logo50.png" alt="logo" style={{ width: '100%', height: '100%' }} />
             </motion.div>
 
         </div>
