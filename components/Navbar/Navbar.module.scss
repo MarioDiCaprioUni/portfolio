@@ -31,13 +31,25 @@
 }
 
 .link {
+    display: flex;
+    gap: 10px;
+}
+
+.linkTitle {
+    display: flex;
     font-size: 13px;
     font-family: 'Source Code Pro', monospace;
     color: $primary;
     transition: 0.5s;
+    &:hover {
+        color: $vibrant;
+        transition: 0.5s;
+    }
 }
 
-.linkActive, .link > span, .link:hover {
+.linkPrefix {
     color: $vibrant;
-    transition: 0.5s;
+    display: flex;
+    font-size: 13px;
+    font-family: 'Source Code Pro', monospace;
 }

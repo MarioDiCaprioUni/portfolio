@@ -3,6 +3,35 @@ import React from "react";
 import {motion, MotionProps} from "framer-motion";
 import {Link as ScrollLink} from "react-scroll";
 import {ReactScrollLinkProps} from "react-scroll/modules/components/Link";
+import AnimateLetters from "../AnimateLetters/AnimateLetters";
+
+
+interface NavbarLinkProps {
+    scrollLinkId: string;
+    prefix: string;
+    title: string;
+}
+
+const NavbarLink: React.FC<NavbarLinkProps> = ({ scrollLinkId, prefix, title }) => {
+    const linkScrollStyle: Partial<ReactScrollLinkProps> = {
+        spy: true,
+        smooth: true,
+        duration: 1000
+    }
+
+    return (
+        <ScrollLink to={scrollLinkId} {...linkScrollStyle}>
+            <div className={styles.link}>
+                <div className={styles.linkPrefix}>
+                    <AnimateLetters>{ prefix }</AnimateLetters>
+                </div>
+                <div className={styles.linkTitle}>
+                    <AnimateLetters>{ title }</AnimateLetters>
+                </div>
+            </div>
+        </ScrollLink>
+    );
+}
 
 
 const Navbar: React.FC = () => {
@@ -11,12 +40,6 @@ const Navbar: React.FC = () => {
         transition: { type: 'spring', duration: 0.4 }
     };
 
-    const linkScrollStyle: Partial<ReactScrollLinkProps> = {
-        spy: true,
-        smooth: true,
-        duration: 1000
-    }
-
     return (
         <div className={styles.context}>
 
@@ -24,33 +47,17 @@ const Navbar: React.FC = () => {
                 <img src="/logo50.png" alt="logo" style={{ width: '100%', height: '100%' }} />
             </motion.div>
 
-            <motion.div className={styles.links}>
+            <div className={styles.links}>
 
-                <ScrollLink to="about" {...linkScrollStyle}>
-                    <span className={styles.link}>
-                        <span>01.</span> About
-                    </span>
-                </ScrollLink>
+                <NavbarLink scrollLinkId="about" prefix="0.1" title="About" />
 
-                <ScrollLink to="skills" {...linkScrollStyle}>
-                    <span className={styles.link}>
-                        <span>02.</span> Skills
-                    </span>
-                </ScrollLink>
+                <NavbarLink scrollLinkId="skills" prefix="0.2" title="Skills" />
 
-                <ScrollLink to="interests" {...linkScrollStyle}>
-                    <span className={styles.link}>
-                        <span>03.</span> Interests
-                    </span>
-                </ScrollLink>
+                <NavbarLink scrollLinkId="interests" prefix="0.3" title="Interests" />
 
-                <ScrollLink to="projects" {...linkScrollStyle}>
-                    <span className={styles.link}>
-                        <span>04.</span> Projects
-                    </span>
-                </ScrollLink>
+                <NavbarLink scrollLinkId="projects" prefix="0.4" title="Projects" />
 
-            </motion.div>
+            </div>
 
         </div>
     );
