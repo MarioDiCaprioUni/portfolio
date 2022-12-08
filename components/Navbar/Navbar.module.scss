@@ -1,0 +1,55 @@
+@import "../../styles/colors";
+
+
+.context {
+    width: 100vw;
+    height: 75px;
+    padding: 5px 100px 5px 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba($background, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.19);
+    z-index: 999999999999;
+}
+
+.logoWrapper {
+    width: 50px;
+    height: 50px;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+    * {
+        cursor: pointer;
+    }
+}
+
+.link {
+    display: flex;
+    gap: 10px;
+}
+
+.linkTitle {
+    display: flex;
+    font-size: 13px;
+    font-family: 'Source Code Pro', monospace;
+    color: $primary;
+    transition: 0.5s;
+    &:hover {
+        color: $vibrant;
+        transition: 0.5s;
+    }
+}
+
+.linkPrefix {
+    color: $vibrant;
+    display: flex;
+    font-size: 13px;
+    font-family: 'Source Code Pro', monospace;
+}

@@ -1,0 +1,51 @@
+@import "../../../styles/dimensions";
+@import "../../../styles/presets";
+
+
+.context {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 5% 15% 5% 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @media(max-width: $medium) {
+        flex-direction: column-reverse;
+        padding: 50px 10px 50px 10px;
+    }
+    @media(max-width: $small) {
+        flex-direction: column;
+        padding: 50px 10px 50px 10px;
+    }
+}
+
+.interestsImages {
+    overflow: hidden;
+    position: relative;
+    width: 70%;
+    max-width: 400px;
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
+    @media(max-width: $medium) {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+.interestsList {
+    h1 {
+        @include Primary-Headline;
+    }
+    p {
+        @include Textual;
+        display: flex;
+        flex-direction: column;
+        span:before {
+            content: '* ';
+            color: $vibrant;
+            font-size: xx-large;
+        }
+    }
+}

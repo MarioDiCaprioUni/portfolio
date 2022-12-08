@@ -1,0 +1,29 @@
+@import "../../../styles/presets";
+@import "../../../styles/dimensions";
+
+
+.context {
+    width: 100%;
+    height: 100vh;
+    padding: 15% 30% 15% 30%;
+}
+
+.myNameIs {
+    @include Vibrant-Code;
+}
+
+.name {
+    @include Primary-Headline;
+    font-size: 80px;
+    line-height: 88px;
+}
+
+.slogan {
+    @include Secondary-Headline;
+    font-size: 70px;
+    line-height: 75px;
+}
+
+.summary {
+    @include Textual;
+}

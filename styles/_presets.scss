@@ -1,0 +1,37 @@
+@import "colors";
+
+
+@mixin Vibrant-Code {
+    color: $vibrant;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+}
+
+@mixin Primary-Headline {
+    color: $primary;
+    font-family: 'Montserrat', serif;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 35px;
+    span {
+        @include Vibrant-Code;
+        font-size: 28px;
+        font-weight: lighter;
+        margin-right: 10px;
+    }
+}
+
+@mixin Secondary-Headline {
+    color: $secondary;
+    font-family: 'Montserrat', serif;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+@mixin Textual {
+    color: $secondary;
+    font-family: 'Montserrat', serif;
+    font-size: 20px;
+    line-height: 27px;
+}
