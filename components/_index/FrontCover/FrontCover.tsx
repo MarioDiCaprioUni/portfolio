@@ -1,6 +1,33 @@
 import styles from "./FrontCover.module.scss";
 import React from "react";
+import {motion, MotionProps, Variants} from "framer-motion";
 
+
+const childVariants: Variants = {
+    before: {
+        opacity: 0,
+        translateY: -20,
+    },
+    after: {
+        opacity: 1,
+        translateY: 0,
+        transition: {
+            duration: 0.5,
+        }
+    }
+}
+
+const containerMotion: MotionProps = {
+    initial: "before",
+    whileInView: "after",
+    viewport: {
+        once: true,
+    },
+    transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.3
+    }
+}
 
 
 /**
@@ -9,25 +36,25 @@ import React from "react";
  */
 const FrontCover: React.FC = () => {
     return (
-        <div id="front-cover" className={styles.context}>
+        <motion.div id="front-cover" className={styles.context} {...containerMotion}>
 
-            <div className={styles.myNameIs}>
+            <motion.div className={styles.myNameIs} variants={childVariants}>
                 Hi, I am
-            </div>
+            </motion.div>
 
-            <div className={styles.name}>
+            <motion.div className={styles.name} variants={childVariants}>
                 Mario Di Caprio
-            </div>
+            </motion.div>
 
-            <div className={styles.slogan}>
+            <motion.div className={styles.slogan} variants={childVariants}>
                 Your friendly neighbourhood web-dev.
-            </div>
+            </motion.div>
 
-            <div className={styles.summary}>
+            <motion.div className={styles.summary} variants={childVariants}>
                 I'm an aspiring software developer specializing in web-development.
-            </div>
+            </motion.div>
 
-        </div>
+        </motion.div>
     );
 }
 

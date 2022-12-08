@@ -36,6 +36,13 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ scrollLinkId, prefix, title }) 
 
 const Navbar: React.FC = () => {
     const logoMotion: MotionProps = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1,
+            transition: { duration: 0.5 }
+        },
         whileTap: { scale: 0.6 },
         transition: { type: 'spring', duration: 0.4 }
     };

@@ -3,6 +3,66 @@ import React, {ReactNode} from "react";
 import MaskedImage from "../../MaskedImage/MaskedImage";
 import {BsGithub as GithubIcon} from "react-icons/bs";
 import {MdOpenInBrowser as OfficialWebsiteIcon} from "react-icons/md";
+import {motion, MotionProps, Variants} from "framer-motion";
+
+
+/**
+ * Framer-Motion effect that fades-in when a component is scrolled
+ * into view.
+ */
+const fadeOnScrollEffect: MotionProps = {
+    initial: { opacity: 0 },
+    viewport: { once: true, margin: '-100px' },
+    whileInView: { opacity: 1, transition: { duration: 0.8 } }
+}
+
+
+const infoItemVariants: Variants = {
+    before: {
+        opacity: 0,
+        translateX: -20,
+    },
+    after: {
+        opacity: 1,
+        translateX: 0,
+        transition: {
+            duration: 0.7
+        }
+    }
+}
+
+
+const infoContainerMotion: MotionProps = {
+    initial: "before",
+    whileInView: "after",
+    viewport: {
+        once: true,
+        margin: '-150px'
+    },
+    transition: {
+        staggerChildren: 0.4
+    }
+}
+
+
+const thumbnailMotion: MotionProps = {
+    initial: {
+        opacity: 0,
+        translateX: -20
+    },
+    whileInView: {
+        opacity: 1,
+        translateX: 0
+    },
+    viewport: {
+        once: true,
+        margin: '-150px'
+    },
+    transition: {
+        staggerChildren: 0.4,
+        duration: 0.7
+    }
+}
 
 
 interface FeaturedProjectProps {
@@ -22,20 +82,22 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ imgSrc, title, align,
     return (
         <div id="projects" className={projectClass}>
 
-            <MaskedImage width="580px" height="340px" src={imgSrc} />
+            <motion.div {...thumbnailMotion}>
+                <MaskedImage width="580px" height="340px" src={imgSrc} />
+            </motion.div>
 
-            <div className={styles.featuredProjectContent}>
+            <motion.div className={styles.featuredProjectContent} {...infoContainerMotion}>
 
-                <h1>
+                <motion.h1 variants={infoItemVariants}>
                     <span>Featured Project<br/></span>
                     { title }
-                </h1>
+                </motion.h1>
 
-                <p>
+                <motion.p variants={infoItemVariants}>
                     { children }
-                </p>
+                </motion.p>
 
-                <div>
+                <motion.div variants={infoItemVariants}>
                     {
                         links?.github &&
                         <a href={links.github}>
@@ -48,9 +110,9 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ imgSrc, title, align,
                             <OfficialWebsiteIcon />
                         </a>
                     }
-                </div>
+                </motion.div>
 
-            </div>
+            </motion.div>
 
         </div>
     );
@@ -61,10 +123,10 @@ const Projects: React.FC = () => {
     return (
         <div className={styles.context}>
 
-            <h1 className={styles.title}>
+            <motion.h1 className={styles.title} {...fadeOnScrollEffect}>
                 <span>04.</span>
                 Some of my projects
-            </h1>
+            </motion.h1>
 
             <FeaturedProject
                 imgSrc="/thumbnails/domcol_js.png"

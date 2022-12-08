@@ -1,6 +1,44 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Interests.module.scss';
-import {motion, useScroll} from "framer-motion";
+import {motion, MotionProps, useScroll, Variants} from "framer-motion";
+
+
+const listItemVariants: Variants = {
+    before: {
+        opacity: 0,
+        translateX: -20,
+    },
+    after: {
+        opacity: 1,
+        translateX: 0,
+        transition: {
+            duration: 0.5
+        }
+    }
+}
+
+
+const listContainerMotion: MotionProps = {
+    initial: "before",
+    whileInView: "after",
+    viewport: {
+        once: true
+    },
+    transition: {
+        staggerChildren: 0.4
+    }
+}
+
+
+/**
+ * Framer-Motion effect that fades-in when a component is scrolled
+ * into view.
+ */
+const fadeOnScrollEffect: MotionProps = {
+    initial: { opacity: 0 },
+    viewport: { once: true, margin: '-300px' },
+    whileInView: { opacity: 1, transition: { duration: 0.8 } }
+}
 
 
 /**
@@ -44,7 +82,7 @@ const ChessWheel: React.FC = () => {
  */
 const Interests: React.FC = () => {
     return (
-        <motion.div id="interests" className={styles.context}>
+        <motion.div id="interests" className={styles.context} {...fadeOnScrollEffect}>
 
             <ChessWheel />
 
@@ -55,12 +93,20 @@ const Interests: React.FC = () => {
                     My Interests
                 </h1>
 
-                <p>
-                    <span>I like developing new skills</span>
-                    <span>I <b>LOVE</b> playing chess</span>
-                    <span>I take an interest in cooking</span>
-                    <span>I enjoy traveling and exploring new cultures</span>
-                </p>
+                <motion.p {...listContainerMotion}>
+                    <motion.span variants={listItemVariants}>
+                        I like developing new skills
+                    </motion.span>
+                    <motion.span variants={listItemVariants}>
+                        I <b>LOVE</b> playing chess
+                    </motion.span>
+                    <motion.span variants={listItemVariants}>
+                        I take an interest in cooking
+                    </motion.span>
+                    <motion.span variants={listItemVariants}>
+                        I enjoy traveling and exploring new cultures
+                    </motion.span>
+                </motion.p>
 
             </div>
 

@@ -178,7 +178,7 @@ const SkillsPanel: React.FC = () => {
     }
 
     return (
-        <div id="skills" className={styles.context}>
+        <motion.div id="skills" className={styles.context} {...fadeOnScrollEffect}>
 
             {/* The panel's title */}
             <h1 className={styles.title}>
@@ -291,7 +291,7 @@ const SkillsPanel: React.FC = () => {
 
             </div>
 
-        </div>
+        </motion.div>
     );
 }
 
