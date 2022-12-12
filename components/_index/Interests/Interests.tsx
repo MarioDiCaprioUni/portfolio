@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Interests.module.scss';
 import {motion, MotionProps, useScroll, Variants} from "framer-motion";
+import {useSmallScreen} from "../../../hooks/useScreen";
 
 
 const listItemVariants: Variants = {
@@ -27,17 +28,6 @@ const listContainerMotion: MotionProps = {
     transition: {
         staggerChildren: 0.4
     }
-}
-
-
-/**
- * Framer-Motion effect that fades-in when a component is scrolled
- * into view.
- */
-const fadeOnScrollEffect: MotionProps = {
-    initial: { opacity: 0 },
-    viewport: { once: true, margin: '-300px' },
-    whileInView: { opacity: 1, transition: { duration: 0.8 } }
 }
 
 
@@ -81,6 +71,14 @@ const ChessWheel: React.FC = () => {
  * is on top and the list is on the bottom.
  */
 const Interests: React.FC = () => {
+    const isSmallScreen = useSmallScreen();
+
+    const fadeOnScrollEffect: MotionProps = {
+        initial: { opacity: 0 },
+        viewport: { once: true, margin: isSmallScreen? '50px' : '-300px' },
+        whileInView: { opacity: 1, transition: { duration: 0.8 } }
+    }
+
     return (
         <motion.div id="interests" className={styles.context} {...fadeOnScrollEffect}>
 

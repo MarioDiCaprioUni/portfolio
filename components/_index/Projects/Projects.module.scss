@@ -83,7 +83,8 @@
 
 
 .featuredProjectSmall {
-    width: 500px;
+    max-width: 500px;
+    width: fit-content;
     height: fit-content;
     padding: 25px;
     border-radius: 5px;
