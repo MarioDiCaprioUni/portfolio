@@ -11,6 +11,9 @@
     justify-content: center;
     gap: 15px;
     padding: 0 30% 7% 30%;
+    @media (max-width: $medium) {
+        padding: 20px;
+    }
 }
 
 .title {

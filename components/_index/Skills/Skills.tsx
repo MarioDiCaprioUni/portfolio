@@ -1,8 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {motion, MotionProps, Transition, useScroll} from "framer-motion";
-import {dimensions} from "../../../scssGlobals";
-import {useMediaQuery} from "react-responsive";
 import styles from "./Skills.module.scss";
+import {useMaxScreen, useMediumScreen} from "../../../hooks/useScreen";
 
 
 /**
@@ -63,9 +62,9 @@ const CardCouple: React.FC<CardCoupleProps> = ({ left, right }) => {
     /** The progress of the animation. Between 0 and 1. */
     const [progress, setProgress] = useState<number>(0);
     /** Whether the screen is small, so to stack the cards instead of inlining them. */
-    const isSmallScreen = useMediaQuery({ query: `(max-width: ${dimensions.medium}px)` });
+    const isSmallScreen = useMediumScreen();
     /** Whether a skill's icon should be inlined with its description. Depends on screen width. */
-    const shouldNotInlineIcon = useMediaQuery({ query: '(max-width: 1300px)' });
+    const shouldNotInlineIcon = useMaxScreen(1300);
     /** The overall scroll progress with respects to this component. */
     const { scrollYProgress } = useScroll({
         target: ref,

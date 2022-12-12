@@ -8,8 +8,3 @@ export const dimensions = {
     medium: 992,
     small: 768
 }
-
-
-export default {
-    colors, dimensions
-}

@@ -6,7 +6,10 @@
     width: 100%;
     min-height: 100vh;
     height: fit-content;
-    padding: 5% 25% 5% 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .title {
@@ -21,6 +24,7 @@
     z-index: 1;
     @if $align == left {
         img {
+            position: absolute;
             right: 0;
         }
         .featuredProjectContent {
@@ -28,6 +32,7 @@
         }
     } @else {
         img {
+            position: absolute;
             left: 0;
         }
         .featuredProjectContent {
@@ -66,6 +71,35 @@
         background: #112240;
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.26);
         padding: 25px;
+    }
+    div {
+        font-size: 25px;
+        * {
+            color: $vibrant;
+            margin: 5px;
+        }
+    }
+}
+
+
+.featuredProjectSmall {
+    width: 500px;
+    height: fit-content;
+    padding: 25px;
+    border-radius: 5px;
+    background: #112240;
+    h1 {
+        @include Primary-Headline;
+        span {
+            font-size: 13px;
+        }
+    }
+    p {
+        @include Textual;
+        width: 100%;
+        font-size: 15.5px;
+        color: #a9b2ce;
+        line-height: 24px;
     }
     div {
         font-size: 25px;

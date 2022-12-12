@@ -11,6 +11,9 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.17",
     "@react-three/drei": "^9.32.3",
     "@react-three/fiber": "^8.8.6",
     "@reduxjs/toolkit": "^1.9.0",

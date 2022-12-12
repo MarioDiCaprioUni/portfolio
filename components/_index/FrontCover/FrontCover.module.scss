@@ -5,7 +5,14 @@
 .context {
     width: 100%;
     height: 100vh;
-    padding: 15% 30% 15% 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contentWrapper {
+    max-width: 1000px;
 }
 
 .myNameIs {
@@ -14,14 +21,14 @@
 
 .name {
     @include Primary-Headline;
-    font-size: 80px;
-    line-height: 88px;
+    font-size: clamp(40px, 8vw, 80px);
+    line-height: 1.1;
 }
 
 .slogan {
     @include Secondary-Headline;
-    font-size: 70px;
-    line-height: 75px;
+    font-size: clamp(40px, 8vw, 80px);
+    line-height: 1.1;
 }
 
 .summary {

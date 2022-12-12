@@ -4,6 +4,7 @@ import MaskedImage from "../../MaskedImage/MaskedImage";
 import {BsGithub as GithubIcon} from "react-icons/bs";
 import {MdOpenInBrowser as OfficialWebsiteIcon} from "react-icons/md";
 import {motion, MotionProps, Variants} from "framer-motion";
+import {useMaxScreen} from "../../../hooks/useScreen";
 
 
 /**
@@ -77,10 +78,43 @@ interface FeaturedProjectProps {
 }
 
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({ imgSrc, title, align, links, children }) => {
+    const isSmallScreen = useMaxScreen(1100);
     const projectClass = align === 'left'? styles.featuredProjectLeft : styles.featuredProjectRight;
 
+    if (isSmallScreen) {
+        return (
+            <motion.div className={styles.featuredProjectSmall} {...infoContainerMotion}>
+
+                <motion.h1 variants={infoItemVariants}>
+                    <span>Featured Project<br/></span>
+                    { title }
+                </motion.h1>
+
+                <motion.p variants={infoItemVariants}>
+                    { children }
+                </motion.p>
+
+                <motion.div variants={infoItemVariants}>
+                    {
+                        links?.github &&
+                        <a href={links.github}>
+                            <GithubIcon />
+                        </a>
+                    }
+                    {
+                        links?.official &&
+                        <a href={links.official}>
+                            <OfficialWebsiteIcon />
+                        </a>
+                    }
+                </motion.div>
+
+            </motion.div>
+        );
+    }
+
     return (
-        <div id="projects" className={projectClass}>
+        <div className={projectClass}>
 
             <motion.div {...thumbnailMotion}>
                 <MaskedImage width="580px" height="340px" src={imgSrc} />
@@ -121,27 +155,29 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ imgSrc, title, align,
 
 const Projects: React.FC = () => {
     return (
-        <div className={styles.context}>
+        <div id="projects" className={styles.context}>
+            <div>
 
-            <motion.h1 className={styles.title} {...fadeOnScrollEffect}>
-                <span>04.</span>
-                Some of my projects
-            </motion.h1>
+                <motion.h1 className={styles.title} {...fadeOnScrollEffect}>
+                    <span>04.</span>
+                    Some of my projects
+                </motion.h1>
 
-            <FeaturedProject
-                imgSrc="/thumbnails/domcol_js.png"
-                title="Domcol-JS"
-                align="right"
-                links={{
-                    official: 'https://domcol-js.vercel.app',
-                    github: 'https://github.com/MarioDiCaprioUni/domcol-js'
-                }}
-            >
-                A tool for visualizing complex-valued functions using a method called
-                <i>Domain Coloring</i>. Check it out if you are a math-geek, you can even
-                plot the famous Mandelbrot-Set!
-            </FeaturedProject>
+                <FeaturedProject
+                    imgSrc="/thumbnails/domcol_js.png"
+                    title="Domcol-JS"
+                    align="right"
+                    links={{
+                        official: 'https://domcol-js.vercel.app',
+                        github: 'https://github.com/MarioDiCaprioUni/domcol-js'
+                    }}
+                >
+                    A tool for visualizing complex-valued functions using a method called
+                    <i>Domain Coloring</i>. Check it out if you are a math-geek, you can even
+                    plot the famous Mandelbrot-Set!
+                </FeaturedProject>
 
+            </div>
         </div>
     );
 }
