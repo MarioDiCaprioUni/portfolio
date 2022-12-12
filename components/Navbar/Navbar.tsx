@@ -158,7 +158,7 @@ const Navbar: React.FC = () => {
             <div className={styles.context}>
 
                 <motion.div className={styles.logoWrapper} {...logoMotion}>
-                    <img src="/logo50.png" alt="logo" style={{ width: '100%', height: '100%' }} />
+                    <img src="/logo100.png" alt="logo" style={{ width: '100%', height: '100%' }} />
                 </motion.div>
 
                 <MenuButton />
