@@ -7,11 +7,14 @@ import Interests from "../components/_index/Interests/Interests";
 import Projects from "../components/_index/Projects/Projects";
 import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
+import {useRouter} from "next/router";
 
 
 const Home: NextPage = () => {
+    const router = useRouter();
+
     return (
-        <div className={styles.context}>
+        <div>
 
             {/* Appendix to document head */}
             <Head>
@@ -26,6 +29,10 @@ const Home: NextPage = () => {
             <Skills />
             <Interests />
             <Projects />
+
+            <div className={styles.credentials}>
+                Built by <span onClick={router.reload}>Mario Di Caprio</span>
+            </div>
 
         </div>
     );
